@@ -25,7 +25,7 @@ class QuotationService
         if ($this->quotableService->getCurrency() !== Currency::EUR) {
             $multiplier = (new CurrencyRateService())->getMultiplier($this->quotableService->getCurrency());
         }
-        return $this->quotableService->calculateQuotation() * ($multiplier ?? 1);
+        return round($this->quotableService->calculateQuotation() * ($multiplier ?? 1) , 2);
     }
 
     /**

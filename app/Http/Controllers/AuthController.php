@@ -41,7 +41,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         if (!$token = auth()->attempt($request->validated())) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Unauthorized / Login Failed'], 401);
         }
 
         return Response::json(['token' => $token, 'type' => 'bearer']);
